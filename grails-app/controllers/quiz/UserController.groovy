@@ -114,11 +114,21 @@ class UserController extends BaseController {
 
     def logout(){
         session.invalidate()
+
+        def results = Result.list()
+        Result.deleteAll(results)
         //session.user=null    or yesto garda pani hunxa
         redirect(action: "login")
+    }
+
+    def resultDisplay(){
+        if(chainModel != null){
+            [marks:chainModel.marks];
+        }
     }
 
     def home(){
 
     }
+
 }

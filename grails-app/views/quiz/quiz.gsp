@@ -29,13 +29,6 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <table>
-        <tr>
-            <td>
-                %{--<g:select from="${["Math","English","Science"]}" name="questionCategory"/>--}%
-            </td>
-        </tr>
-    </table>
 
     <g:form action="quiz" controller="quiz">
 

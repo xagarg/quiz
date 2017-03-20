@@ -1,6 +1,7 @@
 package quiz
 
 import question.Question
+import static java.lang.Integer.parseInt as asInteger
 
 class QuizController extends BaseController {
 
@@ -13,35 +14,41 @@ class QuizController extends BaseController {
         }
         session.questionList=questions
         session.firstReq = "true"
-      forward(action: 'quiz')
+        forward(action: 'quiz')
     }
 
     def quiz() {
+        int marks=0
+
+
         if(session.firstReq.equals('false')){
 
             String clicked=params.option
             String id=params.id
-            int marks=0
+
             def payedQuestion = Question.get(id);
             if (clicked.equals(payedQuestion.correctAnswer)) {
                 marks = 5
+
             }
             new Result(question: payedQuestion.question, clickedAns: clicked, correctAns: payedQuestion.correctAnswer, marks: marks).save()
 
         }
+
         session.firstReq ="false"
+
         def displayQuestion = null
 
-            def qList = session.questionList
-            int size = qList.size()
-            if (size>0) {
-                displayQuestion = qList.get(size-1)
-                qList.remove(size-1)
-            }else{
-                flash.message = "Display result"
-                redirect(controller: "user",action: "home")
-                return
-            }
+        def qList = session.questionList
+        int size = qList.size()
+        if (size>0) {
+            displayQuestion = qList.get(size-1)
+            qList.remove(size-1)
+        }else{
+            //  flash.message="${marks}"
+            // redirect(controller: "user",action: "home",params: [marks:total])
+            chain(controller: "user", action: "resultDisplay",model: [marks: marks])
+        }
 
         [question:displayQuestion]
     }

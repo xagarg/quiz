@@ -8,5 +8,6 @@ class Result {
     int marks
 
     static constraints = {
+
     }
 }

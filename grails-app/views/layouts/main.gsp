@@ -18,7 +18,7 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" alt="Quiz"/></div>
+		<div id="grailsLogo" role="banner"></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
