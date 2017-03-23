@@ -6,6 +6,10 @@ import static java.lang.Integer.parseInt as asInteger
 class QuizController extends BaseController {
 
     def fetchQuestion(){
+        
+        def results = Result.list()
+        Result.deleteAll(results)
+
         def questions = Question.findAllByCategory(params.questionCategory)
         if (questions.size() == 0) {
             flash.message = "Question not Found"
@@ -47,9 +51,10 @@ class QuizController extends BaseController {
         }else{
             //  flash.message="${marks}"
             // redirect(controller: "user",action: "home",params: [marks:total])
-            chain(controller: "user", action: "resultDisplay",model: [marks: marks])
+            int result=Result.countByMarksGreaterThan(1)
+            result=result*5
+            chain(controller: "user", action: "resultDisplay",model: [marks: result])
         }
-
         [question:displayQuestion]
     }
 }

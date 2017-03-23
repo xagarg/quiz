@@ -40,7 +40,22 @@
 
 <div style=" text-align: center">
     <h3>Your score is : ${marks} </h3>
+
 </div>
+
+<div>
+    <g:each in="${resultInstanceList}" status="i" var="result">
+
+        <td>${fieldValue(bean: result, field: "question")}</td>
+
+        <td>${fieldValue(bean: result, field: "clickedAns")}</td>
+
+        <td>${fieldValue(bean: result, field: "correctAns")}</td>
+
+        <td>${fieldValue(bean: result, field: "marks")}</td>
+    </g:each>
+</div>
+
 
 </body>
 </html>
