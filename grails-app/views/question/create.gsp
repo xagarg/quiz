@@ -15,7 +15,6 @@
 					<li><g:link action="list" controller="user">User</g:link></li>
 					<li><g:link action="list" controller="question">Question</g:link></li>
 				</g:if>
-				<li><g:link action="quiz" controller="quiz">Play Quiz</g:link></li>
 				<li><g:link action="logout" controller="user">Log out </g:link></li>
 			</ul>
 		</div>

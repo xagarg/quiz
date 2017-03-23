@@ -122,8 +122,8 @@ class UserController extends BaseController {
     }
 
     def resultDisplay(){
-        def result= Result.list()
 
+        def result= Result.list()
         [resultInstanceResultDisplay:result]
 
         println("++++++++++++++"+result.size())

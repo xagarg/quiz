@@ -1,5 +1,6 @@
 <%
     def resultInstanceResultDisplay =Result.list()
+    int total=0
 %>
 
 <%@ page import="quiz.Result;quiz.User" %>
@@ -8,6 +9,17 @@
 <head>
     <meta name="layout" content="main">
     <title><g:message code="default.list.label" args="[entityName]" /></title>
+
+    <style>
+        .correct{
+            background-color: inherit;
+        }
+        .notcorrect{
+
+            text-decoration-color: red;
+            background-color: red;
+        }
+    </style>
 
 
 </head>
@@ -53,15 +65,21 @@
             <td>Question</td> <td>Clicked Answer</td><td> Correct Answer </td><td> Mark</td>
         </tr>
         </thead>
-
     <g:each in="${resultInstanceResultDisplay}" var="result">
-        <tr>
+        <tr class="${result.correctAns == result.clickedAns ? 'correct' :'notcorrect'}">
         <td>${fieldValue(bean: result, field: "question")}</td>
         <td>${fieldValue(bean: result, field: "clickedAns")}</td>
         <td>${fieldValue(bean: result, field: "correctAns")}</td>
         <td>${fieldValue(bean: result, field: "marks")}</td>
+        <% total= total +result.marks.intValue() %>
         </tr>
     </g:each>
+        <tr>
+        <td>&nbsp;</td>
+        <td>Total</td>
+        <td>Score</td>
+        <td>${total}</td>
+        </tr>
     </table>
 </div>
 
