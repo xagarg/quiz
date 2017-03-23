@@ -6,7 +6,7 @@ import static java.lang.Integer.parseInt as asInteger
 class QuizController extends BaseController {
 
     def fetchQuestion(){
-        
+
         def results = Result.list()
         Result.deleteAll(results)
 

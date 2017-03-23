@@ -122,7 +122,13 @@ class UserController extends BaseController {
     }
 
     def resultDisplay(){
-        [resultInstanceList:Result.list()]
+        def result= Result.list()
+
+        [resultInstanceResultDisplay:result]
+
+        println("++++++++++++++"+result.size())
+
+
         if(chainModel != null){
             [marks:chainModel.marks];
         }

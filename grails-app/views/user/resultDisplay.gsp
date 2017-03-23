@@ -1,5 +1,8 @@
+<%
+    def resultInstanceResultDisplay =Result.list()
+%>
 
-<%@ page import="quiz.Result; quiz.User" %>
+<%@ page import="quiz.Result;quiz.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,16 +47,22 @@
 </div>
 
 <div>
-    <g:each in="${resultInstanceList}" status="i" var="result">
+    <table>
+        <thead>
+        <tr>
+            <td>Question</td> <td>Clicked Answer</td><td> Correct Answer </td><td> Mark</td>
+        </tr>
+        </thead>
 
+    <g:each in="${resultInstanceResultDisplay}" var="result">
+        <tr>
         <td>${fieldValue(bean: result, field: "question")}</td>
-
         <td>${fieldValue(bean: result, field: "clickedAns")}</td>
-
         <td>${fieldValue(bean: result, field: "correctAns")}</td>
-
         <td>${fieldValue(bean: result, field: "marks")}</td>
+        </tr>
     </g:each>
+    </table>
 </div>
 
 
